@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
+import mongoose from "mongoose";
 import "dotenv/config";
 
 import Hello from "./Hello.js";
@@ -16,6 +17,11 @@ import CourseRoutes from "./Kanbas/Courses/routes.js";
 import ModulesRoutes from "./Kanbas/Modules/routes.js";
 import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
 import EnrollmentRoutes from "./Kanbas/Enrollments/routes.js";
+
+// Database Setup
+const CONNECTION_STRING =
+  process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
+mongoose.connect(CONNECTION_STRING);
 
 // App Setup
 const app = express();
@@ -58,4 +64,4 @@ AssignmentRoutes(app);
 EnrollmentRoutes(app);
 
 // Port Stuff
-app.listen(process.env.PORT || 4000);
+app.listen(4000, () => console.log("Server running on port 4000"));
