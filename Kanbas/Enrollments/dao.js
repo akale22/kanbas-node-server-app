@@ -17,3 +17,6 @@ export async function findUsersForCourse(courseId) {
 export async function removeEnrollmentsForCourse(courseId) {
   return model.deleteMany({ course: courseId });
 }
+export async function removeEnrollmentsForUser(userId) {
+  return model.deleteMany({ user: userId });
+}
